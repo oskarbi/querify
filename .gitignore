@@ -34,3 +34,4 @@ nosetests.xml
 
 #Sublime
 *.sublime*
+.ropeproject

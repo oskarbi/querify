@@ -6,17 +6,17 @@ Just a few examples.
 
 import querify
 
-def run_select_example():
+def run_select_examples():
     """SELECT statement generating example."""
     table = "customers"
     select_fields = ['name', 'last_name', 'age', 'country']
     select_conds = {}
     select_conds2 = {'id': 150}
     select_conds3 = {'id': 150, 'nombre': "oscar"}
-    print querify.generate_select(table, select_fields)
-    print querify.generate_select(table, select_fields, select_conds)
-    print querify.generate_select(table, select_fields, select_conds2)
-    print querify.generate_select(table, select_fields, select_conds3)
+    print querify.select_from_dict(table, select_fields)
+    print querify.select_from_dict(table, select_fields, select_conds)
+    print querify.select_from_dict(table, select_fields, select_conds2)
+    print querify.select_from_dict(table, select_fields, select_conds3)
 
 def run_insert_example():
     """INSERT statement generating example."""
@@ -27,7 +27,15 @@ def run_insert_example():
         'last_name': "Teixeira",
         'age': 42,
         'country': "Spain"}
-    print querify.generate_insert(table, insert_values)
+    print querify.insert_from_dict(table, insert_values)
+
+    insert_col_list = ["id", "name", "last_name", "age", "country"]
+    insert_val_list = [
+        [150, "Oscar", "Teixeira", 42, "Spain"],
+        [150, "Oscar", "Teixeira", 42, "Spain"],
+        [150, "Oscar", "Teixeira", 42, "Spain"]
+        ]
+    print querify.insert_from_list(table, insert_col_list, insert_val_list)
 
 def run_update_example():
     """UPDATE statement generating example."""
@@ -38,7 +46,7 @@ def run_update_example():
         'age': 43,
         'country': "Italy"}
     update_conds = {'id': 150}
-    print querify.generate_update(table, update_values, update_conds)
+    print querify.update_from_dict(table, update_values, update_conds)
 
 def run_delete_example():
     """DELETE statement generating example."""
@@ -46,11 +54,11 @@ def run_delete_example():
     delete_conds = {
         'name': "Oscar",
         'last_name': "Teixeira"}
-    print querify.generate_delete(table, delete_conds)
+    print querify.delete_from_dict(table, delete_conds)
 
 
 if __name__ == "__main__":
-    run_select_example()
+    run_select_examples()
     run_insert_example()
     run_update_example()
     run_delete_example()
