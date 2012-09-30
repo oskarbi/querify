@@ -1,5 +1,5 @@
 """
-Module for generating simple SQL statments from Python built-in types.
+Module for generating simple SQL statements from Python built-in types.
 
 :Author: Oscar Teixeira (@oskarbi)
 """
